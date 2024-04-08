@@ -75,11 +75,10 @@ function generate() {
   }
 
   /* global box */
-  box.innerText = story;
+  $("#box").text(story);
 }
 
 /* global clicker */
-$("#box").text(story);
 $("#clicker").click(generate);
 
 generate();
