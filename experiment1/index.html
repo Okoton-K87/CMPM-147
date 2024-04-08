@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 01 - Hello Glitch/Generator</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -25,19 +25,48 @@
 	<!-- Use me for a JavaScript OOP Project -->
 	<script type="text/javascript" src="./js/project.js" DEFER></script>
 	<!-- Use me for a p5.js project -->
-	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+	<!-- <script type="text/javascript" src="./js/sketch.js" DEFER></script> -->
 </head>
+<style>
+	body {
+		background-color: #f4f4f2;
+	}
+	#box {
+		font-family: 'Merienda One', cursive;
+		border: thin solid silver;
+		padding: 1em;
+		margin: 1em;
+		box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+		background: rgba(255, 255, 230, 0.9);
+	}
+	#clicker {
+		font-family: 'Merienda One', cursive;
+		background-color: #8a5a44; 
+		color: #fff; 
+		border: none;
+		padding: 10px 20px;
+		border-radius: 5px;
+		cursor: pointer;
+		box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+		transition: background-color 0.3s ease;
+	}
+	#clicker:hover {
+		background-color: #a6765d; 
+	}
+</style>
 <body>
 	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 01 - Hello Glitch/Generator</h1>
 
 			<div class="minor-section">
-				<div id="canvas-container">
-					<!-- canvas will be added here -->
+				<div class="minor-section">
+					<button id="clicker">Brewing</button>
+					<div id="box"></div>
 				</div>
+				
                 <div class="fullscreen-box">
                     <button id="fullscreen">Fullscreen</button>
                 </div>
@@ -45,7 +74,7 @@
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<p>Create a potion brewing instruction generator on glitch.com and integrate the working generator to my portfolio page</p>
 			</div>
 
 			<div class="minor-section">
