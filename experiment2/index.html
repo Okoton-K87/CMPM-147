@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>EXPERIMENT 2 - A PROCEDURALLY GENERATED LIVING IMPRESSION</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -32,30 +32,66 @@
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>EXPERIMENT 2 - A PROCEDURALLY GENERATED LIVING IMPRESSION</h1>
 
 			<div class="minor-section">
 				<div id="canvas-container">
 					<!-- canvas will be added here -->
 				</div>
+
                 <div class="fullscreen-box">
                     <button id="fullscreen">Fullscreen</button>
+					<button id="clicker">Reimagine</button>
                 </div>
 			</div>
 
 			<div class="minor-section">
 				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<p>This project offers a generative, living impression of this inspiring image:</p>
+				<img src="image/colorful_sunset.jpg" alt="Colorful Sunset" style="width:100%; max-width:600px;">
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<div class="minor-section">
+					<h2>Technical</h2>
+					<p>Relation to inspiring image:</p>
+					<ul>
+						<li>
+							<strong>Color:</strong> The sky (3 major layers), grass, tree, and stone colors were sampled from the inspiring image using the Adobe Color Extracter.
+						</li>
+						<li>
+							<strong>Primitives:</strong> The grass field is rendered with `rectangle` primitives. The trees are rendered with `triangle` primitives. The stars are rendered with `ellipse` primitives.
+						</li>
+						<li>
+							<strong>Polygons:</strong> The background mountain has two layered polygon using `vertex` calls.
+						</li>
+						<li>
+							<strong>Generativity:</strong> Different random seed values lead to differently shaped mountains, differently positioned stars, and differently positioned trees.
+						</li>
+						<li>
+							<strong>Life:</strong> The color transition of the sky responds to the vertical motion of the mouse cursor. The position of stars responds to the horizontal motion of the mouse cursor. The position of trees responds to the horizontal motion of the mouse cursor.
+						</li>
+					</ul>
+					<p>Borrowed from UCSC Prof Adam M. Smith</p>
+					<p>Mountain and Tree Generation related code are inspired by the example and helped by ChatGPT.</p>
+				</div>
+				
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>
+					Throughout the three steps of the generative design process-imitate, integrate, innovate-I found the process both challenging and rewarding. Starting with very little JavaScript experience, I began exploring p5.js, first tweaking the sample code to understand its mechanics, specifically the fill() function and its interaction with shapes. The transition from solid primitives to dynamic landscapes marked my integration phase, where I delved into color theory and canvas manipulation, drawing inspiration from fascinating reference images.
+				</p>
+
+				<p>
+					The innovation phase really puts my creativity to the test. Implementing lerpColor() to achieve smooth transitions and add realistic properties to the tree through strategic scaling based on the tree's position was complex. My goal was to achieve realism by using mouseX to ensure that the trees in the distance changed more, simulating depth perception. Adding a nighttime effect and a star that responds when the mouse is moved to the right energized the static scene.
+				</p>
+
+				<p>
+					While the process had its complexities, especially in capturing the essence of the reference image and striking a balance between interactivity and aesthetics, I think the result is good. It demonstrates the power of generative design in creating vivid impressions through simple code structures. The learning curve is steep, but it's a valuable exercise in computational creativity.
+				</p>
 			</div>
 
 		</section>
