@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- This title is used for tabs and bookmarks -->
-	<title>Experiment X - Subject/Topic</title>
+	<title>Experiment 3 - Alternate World</title>
 
 	<!-- Use UTF character set, a good idea with any webpage -->
 	<meta charset="UTF-8" />
@@ -26,36 +26,98 @@
 	<script type="text/javascript" src="./js/project.js" DEFER></script>
 	<!-- Use me for a p5.js project -->
 	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+	<script type="text/javascript" src="./js/sketch2.js" DEFER></script>
 </head>
 <body>
 	<!-- Style this page by changing the CSS in ../css/site.css or css/experiment.css -->
 	<main id="content">
 		<section>
 
-			<h1>Experiment X - Subject/Topic</h1>
+			<h1>Experiment 3 - Alternate World</h1>
 
 			<div class="minor-section">
 				<div id="canvas-container">
+					<span id="seedReport"></span>
+					<hr />
+					<span id="canvasContainer" style="margin: 10px;"></span>
+					<textarea cols="30" rows="30" id="asciiBox" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea>
 					<!-- canvas will be added here -->
 				</div>
                 <div class="fullscreen-box">
                     <button id="fullscreen">Fullscreen</button>
+					<button id="reseedButton">Reseed</button>
                 </div>
 			</div>
 
 			<div class="minor-section">
-				<h2>Description</h2>
-				<p>What are you trying to acomplish with this experiment?</p>
+				<div id="canvas-container2">
+					<span id="seedReport2"></span>
+					<hr />
+					<span id="canvasContainer2" style="margin: 10px;"></span>
+					<textarea cols="30" rows="30" id="asciiBox2" style="opacity: 0.5; letter-spacing: 1ex; width: 320px; margin: 10px; font-family: monospace;"></textarea>
+					<!-- canvas will be added here -->
+				</div>
+                <div class="fullscreen-box">
+                    <button id="fullscreen2">Fullscreen</button>
+					<button id="reseedButton2">Reseed</button>
+                </div>
+			</div>
+
+			<div class="minor-section">
+				<h2>Description - Artist Statement: Creating Alternate Worlds</h2>
+				<p>Description: "Alternate Worlds" consists of a series of overworlds and dungeons, each distinct yet connected by the underlying algorithms that mold their existence. From lush, verdant landscapes to stark, mysterious dungeons, each scene is designed to evoke a sense of wonder and curiosity. The environments are not static; they evolve, driven by the underlying code that uses noise functions and grid-based logic to simulate a living, breathing world.
+
+					Code: At the heart of these worlds lies a complex codebase, where each line serves a purpose. From managing randomness with seeded values to ensure reproducibility, to transforming simple text codes into rich, visual elements, the code not only generates the grid but also breathes life into it. Functions like generateGrid() and drawGrid() work in tandem to continuously create and render the evolving landscapes based on user interaction and procedural algorithms.
+					
+					Life: Interaction is a core element of "Alternate Worlds." The scenes respond dynamically to mouse movements and the passage of time, introducing elements like flowing rivers and growing vegetation, which change before the viewer's eyes. This responsiveness encourages users to not only observe but also engage with the virtual worlds, creating a unique experience with each visit.</p>
 			</div>
 
 			<div class="minor-section">
 				<h2>Technical</h2>
-				<p>Describe in detail what you did technically and how it works?</p>
+				<div class="minor-section">
+					<!-- <h2>Technical</h2> -->
+					<p>Relation to dungeon and dungeon:</p>
+					<ul>
+						<li>
+							<strong>Prompt:</strong> One project shows an overworld map (with rounded biomes) and the other shows a dungeon map (with rectangular rooms).
+						</li>
+						<li>
+							<strong>Grid:</strong> Different random seeds lead to different grids of codes (i.e. the differences are visible in the textarea below the main display).
+						</li>
+						<li>
+							<strong>Autotiling:</strong> At least two distinct codes are used in the grid. Appropriate transitions between the codes are rendered with autotiling logic.
+						</li>
+						<li>
+							<strong>Editing:</strong> The audience is able to edit the text version of the grid of codes as if it were a level editor, and the scene updates to show the changes. The drawGrid function must look at the details in the grid data structure, not regenerate all details from scratch each frame.
+						</li>
+						<li>
+							<strong>Incidentals:</strong> he codes are rendered with some additional variation. If the audience were to fill the grid with just one code, there should still be some spatial variation to be seen.
+						</li>
+						<li>
+							<strong>Life:</strong> The shows signs of life. Either there is some passive animation (based on time, via millis), or there is animation that response to the mouse position (via mouseX/mouseY).
+						</li>
+
+					</ul>
+					<p>Collaborated with from UCSC student Marvel McDowell</p>
+					<p>Paths Generation related code are inspired by the example and helped by ChatGPT.</p>
+				</div>
+				
 			</div>
 
 			<div class="minor-section">
 				<h2>Reflection</h2>
-				<p>Each person that worked on the code should reflect on the process, the difficulties, and the successes of the experiment.</p>
+				<p>
+					As I transitioned to the integration phase, my focus shifted towards incorporating complex features that would bring the static tilesets to life. This included implementing interactive elements that responded to user inputs like mouse movements, which added a dynamic layer to the experience. The challenge was to meld these interactive features seamlessly with the static elements to maintain a cohesive aesthetic throughout the digital landscapes.
+				</p>
+				
+				<p>
+					The innovation phase pushed my creative boundaries further, leading to the development of environments that not only responded to time and interaction but also evolved unpredictably within the constraints set by the procedural algorithms. Utilizing advanced features like noise functions and custom event handlers, I aimed to simulate environmental changes such as growth patterns and weather transitions, which introduced a new level of realism and immersion.
+				</p>
+				
+				<p>
+					This project was as challenging as it was enlightening, teaching me not only about the technical aspects of JavaScript and p5.js but also about the artistic possibilities of combining code with design principles. The balance between functionality and aesthetic appeal in a dynamically generated world was difficult to achieve, but the end result was rewarding. It underscored the transformative power of generative art and its capability to create complex, interactive systems from simple rules.
+				</p>
+				
 			</div>
 
 		</section>
