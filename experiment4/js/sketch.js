@@ -643,10 +643,14 @@ const s2 = (sketch) => {
       const timeElapsed = sketch.millis() - star.startTime;
       if (timeElapsed <= starFallDuration) {
         let dropDistance = sketch.map(timeElapsed, 0, starFallDuration, -50, 0);
-        sketch.fill("#FFFF00");
+        
         sketch.push();
         sketch.translate(0, dropDistance);
         sketch.beginShape();
+        sketch.fill(0, 0, 0, 32);
+        sketch.ellipse(0, -dropDistance, 10, 5);
+        sketch.fill("#FFFF00");
+
         for (let a = 0; a < sketch.TWO_PI; a += sketch.TWO_PI / 5) {
           let x = sketch.cos(a) * 10;
           let y = sketch.sin(a) * 10;
@@ -656,8 +660,8 @@ const s2 = (sketch) => {
           sketch.vertex(x, y);
         }
         sketch.endShape(sketch.CLOSE);
-        sketch.fill(0, 0, 0, 32);
-        sketch.ellipse(0, 0, 10, 5);
+        // sketch.fill(0, 0, 0, 32);
+        // sketch.ellipse(0, -dropDistance, 10, 5);
         // sketch.translate(0, dropDistance);
         sketch.pop();
       } else {
