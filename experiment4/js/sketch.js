@@ -816,7 +816,7 @@ const s3 = (sketch) => {
 
   function mouseClicked() {
     let world_pos = screenToWorld(
-      [0 - mouseX, mouseY],
+      [0 - sketch.mouseX, sketch.mouseY],
       [camera_offset.x, camera_offset.y]
     );
 
@@ -953,6 +953,7 @@ const s3 = (sketch) => {
   function p3_setup() {
     canvas = sketch.createCanvas(600, 600/3);
     canvas.parent("canvas-container3");
+    canvas.mousePressed(mouseClicked); 
   }
 
   let worldSeed;
@@ -967,24 +968,33 @@ const s3 = (sketch) => {
   function p3_tileWidth() {
     return 16;
   }
-
+  
   function p3_tileHeight() {
     return 8;
   }
-
+  
   function p3_drawBefore() {
     sketch.background("#DEF3F6");
   }
-
+  
+  let [tw, th] = [p3_tileWidth(), p3_tileHeight()];
+  
+  let clicks = {};
+  
+  function p3_tileClicked(i, j) {
+    let key = [i, j];
+    clicks[key] = 1 + (clicks[key] | 0);
+  }
+  
   function p3_drawTile(i, j) {
-    sketch.noStroke();
-
+    // sketch.noStroke();
+  
     // Define ocean colors
-    const deepWaterColor = sketch.color("#003366"); // Dark blue for deep water
-    const midWaterColor = sketch.color("#006699"); // Medium blue for mid-depth
-    const shallowWaterColor = sketch.color("#00b7e4"); // Lighter blue for shallow areas
-    const foamColor = sketch.color("#78e4ff"); // Very light blue for foam or wave crests
-
+    const deepWaterColor = sketch.color("#ff2500"); // Dark blue for deep water
+    const midWaterColor = sketch.color("#ff6600"); // Medium blue for mid-depth
+    const shallowWaterColor = sketch.color("#f2f217"); // Lighter blue for shallow areas
+    const foamColor = sketch.color("#ea5c0f"); // Very light blue for foam or wave crests
+  
     // Calculate wave effect based on time and horizontal position
     const waveSpeed = 0.0015; // Speed at which the wave moves
     const waveFrequency = 0.2; // Frequency of the wave
@@ -992,7 +1002,7 @@ const s3 = (sketch) => {
     const currentTime = sketch.millis();
     const wavePhase = currentTime * waveSpeed + i * waveFrequency;
     const waveEffect = sketch.sin(wavePhase) * waveAmplitude;
-
+  
     // Interpolate between colors based on waveEffect, with swapped order
     let colorEffect;
     if (waveEffect < -2.5) {
@@ -1002,9 +1012,9 @@ const s3 = (sketch) => {
     } else {
       colorEffect = sketch.lerpColor(midWaterColor, deepWaterColor, sketch.map(waveEffect, 2.5, 5, 0, 1));
     }
-
+  
     sketch.fill(colorEffect); // Use the dynamically chosen color
-
+  
     sketch.push();
     sketch.translate(0, waveEffect); // Apply the vertical displacement based on the wave
     sketch.beginShape();
@@ -1013,37 +1023,61 @@ const s3 = (sketch) => {
     sketch.vertex(p3_tileWidth(), 0);
     sketch.vertex(0, -p3_tileHeight());
     sketch.endShape(sketch.CLOSE);
-
-    // Check and draw boat
-    const tileKey = `${i}_${j}`;
-    if (!boats[tileKey] && XXH.h32(tileKey, worldSeed).toNumber() % 100 < 10) {
-      boats[tileKey] = {
-        textureIndex: sketch.floor(sketch.random() * boatTextures.length) // Choose a random texture index
-      };
+    
+    // noStroke();
+    if (XXH.h32("tile:" + [i, j], worldSeed) % 4 == 0) {
+      // fill("#7CFC00");
+      drawLand("#7CFC00", "#996633", "#996633")
+    } else {
+      sketch.fill("white");
     }
-    if (boats[tileKey]) {
-      drawBoat(boats[tileKey].textureIndex);
+  
+    let n = clicks[[i, j]] | 0;
+    if (n % 2 == 1) {
+      drawLand("#7CFC00", "#996633", "#996633")
     }
-
     sketch.pop();
   }
-
-  function drawBoat(textureIndex) {
-    const scale = (p3_tileWidth() * 2) / 64;
-    sketch.image(boatTextures[textureIndex], 0, -30, 64 * scale, 64 * scale);
+  
+  function drawLand(color1, color2, color3) {
+    // fill("#7CFC00");
+    sketch.fill(color1);
+    // Translate up for the second square (top of the building)
+    sketch.translate(0, -30);
+  
+    // Draw the top square
+    sketch.beginShape();
+    sketch.vertex(-tw, 0);
+    sketch.vertex(0, th);
+    sketch.vertex(tw, 0);
+    sketch.vertex(0, -th);
+    sketch.endShape(sketch.CLOSE);
+  
+    sketch.fill(color2);
+    sketch.beginShape();
+    sketch.vertex(0, th);      // Bottom left of the top square
+    sketch.vertex(0, th + 30);   // Top left of the top square
+    sketch.vertex(tw, 0 + 30);  // Top right of the top square
+    sketch.vertex(tw, 0);     // Bottom right of the top square
+    sketch.endShape(sketch.CLOSE);
+  
+    // fill("#996633");
+    sketch.fill(color3);
+    sketch.beginShape();
+    sketch.vertex(0, th);      // Bottom left of the top square
+    sketch.vertex(0, th + 30);   // Top left of the top square
+    sketch.vertex(-tw, 0 + 30);  // Top right of the top square
+    sketch.vertex(-tw, 0);     // Bottom right of the top square
+    sketch.endShape(sketch.CLOSE);
   }
-
-  function p3_tileClicked(i, j) {
-    // This function can still handle interactions as needed
-  }
-
+  
   function p3_drawSelectedTile(i, j) {
     // noFill();
     sketch.fill(0);
     sketch.text("tile " + [i, j], 0, 0);
   }
-
-
+  
+  
   function p3_drawAfter() {}
       
 }
