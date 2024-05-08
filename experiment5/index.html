@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- This title is used for tabs and bookmarks -->
+	<title>Experiment 05: Evolutionary Art</title>
+
+	<!-- Use UTF character set, a good idea with any webpage -->
+	<meta charset="UTF-8" />
+	<!-- Set viewport so page remains consistently scaled w narrow devices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<!-- Include CSS file, including a site-wide CSS and for this particular page -->
+	<link rel="stylesheet" type="text/css" href="../css/site.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<!-- Load jQuery library -->
+	<script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+        crossorigin="anonymous"></script>
+	<!-- Load p5.js library -->
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.9.2/lib/p5.js"></script>
+
+	<!-- Link to javascript files - DEFER waits until all elements are rendered -->
+    <!-- <script type="text/javascript" src="../js/site.js" DEFER></script> -->
+	<!-- Use me for a JavaScript OOP Project -->
+	<script type="text/javascript" src="./js/project.js" DEFER></script>
+	<!-- <script src="./js/xxhash.min.js" defer></script> -->
+	<!-- Use me for a p5.js project -->
+	<script type="text/javascript" src="./js/sketch.js" DEFER></script>
+</head>
+<body>
+    <main id="content">
+        <section>
+            <h1>Experiment 05: Evolutionary Art</h1>
+
+            <div class="minor-section">
+                <div id="canvas-container1" class="p5Canvas">
+                    <img id="inspirationImage" src="" alt="Inspiration Image" style="width:15%; display:block;">
+                    <select id="dropper"></select>
+                    <button id="restart">restart</button>
+                    <p>Mutation rate (<span id="rate"></span>%):<br />
+                        <input id="slider" type="range" min="1" max="100" value="100" />
+                    </p>
+                    <p id="active"></p>
+                    <p>Active score: <span id="activeScore"></span></p>
+                    <p>Exploration rate: <span id="fpsCounter"></span> fps</p>
+                    <p id="best"></p>
+                    <p>Best score: <span id="bestScore"></span></p>
+                    <p id="memory" data-max-items="16"></p>
+                </div>
+            </div>                    
+
+            <div class="minor-section">
+                <h2>Artist Statement: Evolutionary Art Inspired by Iconic Images</h2>
+                <p>The "Evolutionary Art" project is an artistic exploration that combines the timeless beauty of iconic images with the dynamic and unpredictable nature of procedural generation. This digital canvas is a playground where art and algorithmic complexity meet, creating a space where inspiration from classic paintings is reimagined through the lens of modern computational techniques.</p>
+            </div>
+
+            <div class="minor-section">
+                <h2>Technical Overview</h2>
+                <p>Integration of Inspirational Imagery:</p>
+                <ul>
+                    <li><strong>Dynamic Image Selection:</strong> Users can choose from three inspirational images, influencing both visual output and procedural generation rules.</li>
+                    <li><strong>Inspiration-Specific Initialization:</strong> The initial conditions and parameters of the artwork are tailored based on the selected image, enhancing its unique characteristics.</li>
+                </ul>
+                <p>Procedural Rendering Techniques:</p>
+                <ul>
+                    <li><strong>Adaptive Rendering:</strong> A 30-second annealing-like process allows the artwork to refine gradually, enhancing resemblance to the inspiration image.</li>
+                    <li><strong>Responsive Mutation Process:</strong> Users can adjust the mutation rate to explore artistic variations, from subtle shifts to dramatic transformations.</li>
+                </ul>
+                <p>User Interaction and Control:</p>
+                <ul>
+                    <li><strong>Rate Adjustment:</strong> The mutation rate slider enables users to nearly halt the evolutionary process, offering control over the artwork's development.</li>
+                </ul>
+            </div>
+
+            <div class="minor-section">
+                <h2>Reflection</h2>
+                <p>Integrating art with code presented a unique challenge, balancing aesthetic and technical elements to create a responsive, dynamic artwork. This project was a profound learning experience, emphasizing the potential of procedural generation in creating interactive, evolving art.</p>
+            </div>
+        </section>
+		<nav id="links" class="minor-section">
+			<!-- Put link back to homepage here. -->
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+            </ul>
+		</nav>
+    </main>
+</body>
+</html>
+
